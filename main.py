@@ -23,7 +23,8 @@ class Plugin:
         
         try:
             decky.logger.info("Locking WiFi to current BSSID")
-            result = subprocess.run([self.lock_script_path], capture_output=True, text=True)
+            custom_env = {"LD_LIBRARY_PATH": "", **os.environ}
+            result = subprocess.run([self.lock_script_path], capture_output=True, text=True, env=custom_env)
             decky.logger.info(f"Lock script exit code: {result.returncode}")
             decky.logger.info(f"Lock script stdout: {result.stdout}")
             
