@@ -1,0 +1,8 @@
+version: '3'
+services:
+  test:
+    build:
+      context: ..  # Go up to project root
+      dockerfile: tests/Dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
